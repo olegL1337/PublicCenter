@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PublicCenter.Models.ExtraModels.ScheduleModel>
+
+@{
+    ViewData["Title"] = "Schedule";
+}
+
+<h2>Schedule</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Service
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.client.First_name
+                @item.client.Last_name
+            </td>
+            <td>
+                @item.client.Real_address.City 
+                @item.client.Real_address.District  
+                @item.client.Real_address.Addr
+            </td>
+            <td>
+                @item.service.Name
+                @item.service.Price
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
