@@ -26,9 +26,9 @@ namespace PublicCenter.Models
         public string Personal_file_number { get; set; }
         //?????
         [DataType(DataType.Date)]
-        public DateTime Date_birth { get; set; }
-        public int Age { get; set; }
-        public bool Sex { get; set; }
+        public DateTime? Date_birth { get; set; }
+        public int? Age { get; set; }
+        public bool? Sex { get; set; }
         public string Passport { get; set; }
         public string Identify_number { get; set; }
         public string Group { get; set; }
@@ -44,5 +44,31 @@ namespace PublicCenter.Models
         public Worker Worker { get; set; }
         public string Organization_Service_House { get; set; }
         public bool Is_active { get; set; }
+
+        public void Edit(Client client)
+        {
+            First_name = client.First_name;
+            Last_name = client.Last_name;
+            Father_name = client.Father_name;
+            Phone_stat = client.Phone_stat;
+            Mobile_phone = client.Mobile_phone;
+            Passport = client.Passport;
+            Date_birth = client.Date_birth;
+            Sex = client.Sex;
+            Identify_number = client.Identify_number;
+            Group = client.Group;
+            Period = client.Period;
+            Group = client.Group;
+            Degree_Indiv_Need = client.Degree_Indiv_Need;
+            Number_Of_Visit = client.Number_Of_Visit;
+            Group_Motor_Activity = client.Group_Motor_Activity;
+            Ability_Self_Service = client.Ability_Self_Service;
+            Degree_Indiv_Need = client.Degree_Indiv_Need;
+            Condition_Giving_Service = client.Condition_Giving_Service;
+            Organization_Service_House = client.Organization_Service_House;
+            Is_active = client.Is_active;
+
+
+        }
     }
 }

@@ -14,6 +14,6 @@ namespace PublicCenter.Models
         public int? ServiceTypeID { get; set; }
         public ServiceType ServiceType { get; set; }
         public string GroupOfMotorActivity { get; set; }
-        public double Price { get; set; }
+        public double? Price { get; set; }
     }
 }

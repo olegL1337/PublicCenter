@@ -1,0 +1,89 @@
+INSERT INTO public."Addresses"(
+  "ID", "City", "District", "Addr")
+  VALUES (1, 'Lviv', 'Lychakivskyi', 'Street1 145/98'),
+  (2, 'Lviv', 'Halytskyi', 'Street2 43'),
+  (3, 'Lviv', 'Sychiv', 'Street3 12'),
+  (4, 'Lviv', 'Center', 'Street4 36'),
+  (5, 'Lviv', 'Pohyljanke', 'Street5 89'),
+  (6, 'Lviv', 'Levandivka', 'Street6 67'),
+  (7, 'Lviv', 'Lychakivskyi', 'Street7 212'),
+  (8, 'Lviv', 'Center', 'Street8 23'),
+        (9, 'Lviv', 'Vynnyky', 'Street9 45'),
+        (10, 'Lviv', 'Center', 'Street10 34a'),
+        (11, 'Lviv', 'Center', 'Street11 98');
+
+
+INSERT INTO public."Workers"(
+  "ID", "DepartmentID", "First_name", "Last_name", "Father_name", "AddressID", "Phone_stat", "Mobile_phone", "Passport", "Identify_number", "Date_birth", "Age", "Sex", "Role")
+  VALUES (1, 1, 'Oksana', 'Petrova', 'Petrivna', 1, '22348956', '0927849187', 'TR12343', '12345678', '1978-02-13', null, true, 'manager'),
+  (2, 2, 'Ivan', 'Ivanov', 'Ivanovych', 1, '22348957', '0927849188', 'TR12343', '12345678', '1969-12-21', null, false, 'manager'),
+  (3, 3, 'Serhij', 'Sethijev', 'Serhijovych', 1, '22348958', '0927849189', 'TR12343', '12345678', '1982-07-18', null, false, 'worker'),
+  (4, 4, 'Natalia', 'Natalka', 'Nataliivna', 1, '22348959', '0927849190', 'TR12343', '12345678', '1973-06-19', null, true, 'worker'),
+  (5, 5, 'Maria', 'Marieva', 'Marievna', 1, '22348960', '0927849191', 'TR12343', '12345678', '1971-09-27', null, true, 'worker'),
+  (6, 2, 'Semen', 'Semenov', 'Semenovych', 1, '22348961', '0927849192', 'TR12343', '12345678', '1969-10-30', null, false, 'worker'),
+  (7, 1, 'Pavlo', 'Pavlov', 'Pavlovych', 1, '22348962', '0927849193', 'TR12343', '12345678', '1992-05-19', null, false, 'worker'),
+  (8, 2, 'Sydir', 'Sydirov', 'Sydorovych', 1, '22348963', '0927849194', 'TR12343', '12345678', '1976-02-24', null, false, 'worker'),
+  (9, 1, 'Orusja', 'Orisieva', 'Orysievna', 1, '22348964', '0927849195', 'TR12343', '12345678', '1974-08-02', null, true, 'worker'),
+  (10, 2, 'Tetiana', 'Tetianiv', 'Tetianova', 1, '22348965', '0927849196', 'TR12343', '12345678', '1993-12-01', null, true, 'worker');
+
+INSERT INTO public."Departments"(
+  "ID", "WorkerId")
+  VALUES (1, 1), (2,2), (3,3), (4,4), (5,5);
+
+INSERT INTO public."Statuses"(
+  "ID", "Status_name")
+  VALUES (1, 'veteran'),
+  (2,'invalid'),
+  (3,'ychasnyk bojovych gij');
+
+INSERT INTO public."ServiceTypes"(
+  "ID", "Name")
+  VALUES (1, 'type service 1'),
+  (2, 'type service 2'),
+  (3, 'type service 3'),
+  (4, 'type service 4');
+
+
+INSERT INTO public."Services"(
+  "ID", "Name", "ServiceTypeID", "GroupOfMotorActivity", "Price")
+  VALUES (1, 'Service 1', 1, 'Group1', 51.00),
+  (2, 'Service 2', 2, 'Group1', 51.00),
+  (3, 'Service 3', 3, 'Group2', 52.56),
+  (4, 'Service 4', 2, 'Group1', 53.56),
+  (5, 'Service 5', 1, 'Group3', 54.56),
+  (6, 'Service 6', 3, 'Group4', 55.56),
+  (7, 'Service 7', 2, 'Group2', 56.56),
+  (8, 'Service 8', 2, 'Group1', 57.56);
+INSERT INTO public."Clients"(
+  "ID", "DepartmentID", "First_name", "Last_name", "Father_name", "Formal_addressId", "Real_addressId", "Phone_stat", "Mobile_phone", "Personal_file_number", "Date_birth", "Age", "Sex", "Passport", "Identify_number", "Group", "Period", "Degree_Indiv_Need", "Group_Motor_Activity", "Ability_Self_Service", "Condition_Giving_Service", "Number_Of_Visit", "WorkerID", "Organization_Service_House", "Is_active")
+  VALUES (1, 1, 'ClientName1', 'ClientLastName1', 'ClientFathername1', 8, 8, '2234535', '0985648395', '234987', '1957-12-12', null, true, 'AB453', '1234264754', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 7, 'HouseOrganization1', true),
+  (2, 1, 'ClientName2', 'ClientLastName2', 'ClientFathername2', 2, 2, '2234535', '0985648395', '234987', '1957-01-13', null, false, 'AB453', '1234264755', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 9, 'HouseOrganization1', true),
+  (3, 1, 'ClientName3', 'ClientLastName3', 'ClientFathername3', 3, 3, '2234535', '0985648395', '234987', '1957-02-14', null, false, 'AB453', '1234264756', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 9, 'HouseOrganization1', true),
+  (4, 1, 'ClientName4', 'ClientLastName4', 'ClientFathername4', 4, 4, '2234535', '0985648395', '234987', '1957-03-15', null, true, 'AB453', '12342647547', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 7, 'HouseOrganization1', true),
+  (5, 1, 'ClientName5', 'ClientLastName5', 'ClientFathername5', 5, 5, '2234535', '0985648395', '234987', '1957-04-16', null, true, 'AB453', '1234264758', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 7, 'HouseOrganization1', false),
+  (6, 2, 'ClientName6', 'ClientLastName6', 'ClientFathername6', 5, 5, '2234535', '0985648395', '234987', '1957-05-17', null, false, 'AB453', '1234264759', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 6, 'HouseOrganization1', true),
+  (7, 2, 'ClientName7', 'ClientLastName7', 'ClientFathername7', 5, 5, '2234535', '0985648395', '234987', '1957-06-18', null, true, 'AB453', '1234264760', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 6, 'HouseOrganization1', true),
+  (8, 2, 'ClientName8', 'ClientLastName8', 'ClientFathername8', 5, 5, '2234535', '0985648395', '234987', '1957-07-19', null, false, 'AB453', '12342647541', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 6, 'HouseOrganization1', false),
+  (9, 2, 'ClientName9', 'ClientLastName9', 'ClientFathername9', 6, 6, '2234535', '0985648395', '234987', '1957-08-20', null, true, 'AB453', '12342647542', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 10, 'HouseOrganization1', true),
+  (10, 2, 'ClientName10', 'ClientLastName10', 'ClientFathername10', 6, 6, '2234535', '0985648395', '234987', '1957-09-21', null, true, 'AB453', '12342647553', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 8, 'HouseOrganization1', true),
+  (11, 1, 'ClientName11', 'ClientLastName11', 'ClientFathername11', 6, 6, '2234535', '0985648395', '234987', '1957-10-22', null, false, 'AB453', '12342647534', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 7, 'HouseOrganization1', true),
+  (12, 1, 'ClientName12', 'ClientLastName12', 'ClientFathername12', 6, 6, '2234535', '0985648395', '234987', '1957-11-23', null, false, 'AB453', '123426475454', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 7, 'HouseOrganization1', true),
+(13, 1, 'ClientName13', 'ClientLastName13', 'ClientFathername13', 7, 7, '2234535', '0985648395', '234987', '1957-12-24', null, true, 'AB453', '123426475434', 'group 1', 'period 1', 'degree_motor_act1', 'gr1', 'ability_selfservice1', 'condition1', null, 9, 'HouseOrganization1', true);
+
+
+
+INSERT INTO public."ClientStatuses"(
+  "ClientID", "StatusId")
+  VALUES (1, 1),
+  (1,2),
+  (4,1),
+  (5,3);
+
+
+INSERT INTO public."ClientTypeOfServices"(
+  "ClientID", "ServiceTypeID")
+  VALUES (1, 1), (1,2),
+  (2,3), (3,4), (4,4),
+  (5,3),(6,3),(7,2), (7,3),
+  (8,1),(9,1), (10,1), (11,4),
+  (12,2), (13,3);

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PublicCenter.Models.Worker>
+
+@{
+    ViewData["Title"] = "WorkerList";
+}
+
+<h2>Workers List</h2>
+
+<p>
+    <a asp-action="CreateWorker">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Contacts
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Date of Birth
+            </th>
+            <th>
+                Sex
+            </th>
+            <th>
+                Identification
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @try
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.First_name)
+                        @Html.DisplayFor(modelItem => item.Last_name)
+                        @Html.DisplayFor(modelItem => item.Father_name)
+                    </td>
+                    <td>
+                        Telephone: @Html.DisplayFor(modelItem => item.Phone_stat)
+                        Mobile Phone: @Html.DisplayFor(modelItem => item.Mobile_phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address.City)
+                        @Html.DisplayFor(modelItem => item.Address.District)
+                        @Html.DisplayFor(modelItem => item.Address.Addr)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date_birth)
+                    </td>
+                    <td>
+                        @if (item.Sex != null)
+                        {
+                            @if ((bool)item.Sex)
+                            {
+                                <div>Male</div>
+                            }
+                            else
+                            {
+                                <div>Female</div>
+                            }
+                        }
+                    </td>
+                    <td>
+                        Passport: @Html.DisplayFor(modelItem => item.Passport)
+                        Id number: @Html.DisplayFor(modelItem => item.Identify_number)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditWorker", new { id = item.ID }) |
+                        @*<a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        }
+        catch { }
+    </tbody>
+</table>

@@ -42,15 +42,11 @@ namespace PublicCenter.Migrations
 
                     b.Property<string>("Ability_Self_Service");
 
-                    b.Property<int?>("Address1ID");
-
-                    b.Property<int?>("Address2ID");
-
-                    b.Property<int>("Age");
+                    b.Property<int?>("Age");
 
                     b.Property<string>("Condition_Giving_Service");
 
-                    b.Property<DateTime>("Date_birth");
+                    b.Property<DateTime?>("Date_birth");
 
                     b.Property<string>("Degree_Indiv_Need");
 
@@ -60,7 +56,7 @@ namespace PublicCenter.Migrations
 
                     b.Property<string>("First_name");
 
-                    b.Property<int?>("Formal_address_id");
+                    b.Property<int?>("Formal_addressId");
 
                     b.Property<string>("Group");
 
@@ -87,9 +83,9 @@ namespace PublicCenter.Migrations
 
                     b.Property<string>("Phone_stat");
 
-                    b.Property<int?>("Real_address_id");
+                    b.Property<int?>("Real_addressId");
 
-                    b.Property<bool>("Sex");
+                    b.Property<bool?>("Sex");
 
                     b.Property<int?>("WorkerID");
 
@@ -97,11 +93,11 @@ namespace PublicCenter.Migrations
 
                     b.HasAlternateKey("Identify_number");
 
-                    b.HasIndex("Address1ID");
-
-                    b.HasIndex("Address2ID");
-
                     b.HasIndex("DepartmentID");
+
+                    b.HasIndex("Formal_addressId");
+
+                    b.HasIndex("Real_addressId");
 
                     b.HasIndex("WorkerID");
 
@@ -125,11 +121,11 @@ namespace PublicCenter.Migrations
                 {
                     b.Property<int?>("ClientID");
 
-                    b.Property<int?>("ServiceID");
+                    b.Property<int?>("ServiceTypeID");
 
-                    b.HasKey("ClientID", "ServiceID");
+                    b.HasKey("ClientID", "ServiceTypeID");
 
-                    b.HasIndex("ServiceID");
+                    b.HasIndex("ServiceTypeID");
 
                     b.ToTable("ClientTypeOfServices");
                 });
@@ -139,9 +135,12 @@ namespace PublicCenter.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ManagerId");
+                    b.Property<int?>("WorkerId");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("WorkerId")
+                        .IsUnique();
 
                     b.ToTable("Departments");
                 });
@@ -190,7 +189,7 @@ namespace PublicCenter.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<double>("Price");
+                    b.Property<double?>("Price");
 
                     b.Property<int?>("ServiceTypeID");
 
@@ -232,9 +231,9 @@ namespace PublicCenter.Migrations
 
                     b.Property<int?>("AddressID");
 
-                    b.Property<int>("Age");
+                    b.Property<int?>("Age");
 
-                    b.Property<DateTime>("Date_birth");
+                    b.Property<DateTime?>("Date_birth");
 
                     b.Property<int?>("DepartmentID");
 
@@ -254,31 +253,28 @@ namespace PublicCenter.Migrations
 
                     b.Property<string>("Role");
 
-                    b.Property<bool>("Sex");
+                    b.Property<bool?>("Sex");
 
                     b.HasKey("ID");
 
                     b.HasIndex("AddressID");
-
-                    b.HasIndex("DepartmentID")
-                        .IsUnique();
 
                     b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("PublicCenter.Models.Client", b =>
                 {
-                    b.HasOne("PublicCenter.Models.Address", "Address1")
-                        .WithMany()
-                        .HasForeignKey("Address1ID");
-
-                    b.HasOne("PublicCenter.Models.Address", "Address2")
-                        .WithMany()
-                        .HasForeignKey("Address2ID");
-
                     b.HasOne("PublicCenter.Models.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentID");
+
+                    b.HasOne("PublicCenter.Models.Address", "Formal_address")
+                        .WithMany()
+                        .HasForeignKey("Formal_addressId");
+
+                    b.HasOne("PublicCenter.Models.Address", "Real_address")
+                        .WithMany()
+                        .HasForeignKey("Real_addressId");
 
                     b.HasOne("PublicCenter.Models.Worker", "Worker")
                         .WithMany()
@@ -305,10 +301,17 @@ namespace PublicCenter.Migrations
                         .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("PublicCenter.Models.Service", "Service")
+                    b.HasOne("PublicCenter.Models.Service", "ServiceType")
                         .WithMany()
-                        .HasForeignKey("ServiceID")
+                        .HasForeignKey("ServiceTypeID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PublicCenter.Models.Department", b =>
+                {
+                    b.HasOne("PublicCenter.Models.Worker", "Worker")
+                        .WithOne("Department")
+                        .HasForeignKey("PublicCenter.Models.Department", "WorkerId");
                 });
 
             modelBuilder.Entity("PublicCenter.Models.DoneWork", b =>
@@ -346,10 +349,6 @@ namespace PublicCenter.Migrations
                     b.HasOne("PublicCenter.Models.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressID");
-
-                    b.HasOne("PublicCenter.Models.Department", "Department")
-                        .WithOne("Worker")
-                        .HasForeignKey("PublicCenter.Models.Worker", "DepartmentID");
                 });
 #pragma warning restore 612, 618
         }

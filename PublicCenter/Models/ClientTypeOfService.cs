@@ -9,7 +9,7 @@ namespace PublicCenter.Models
     {
         public int? ClientID { get; set; }
         public Client Client { get; set; }
-        public int? ServiceID { get; set; }
-        public Service Service { get; set; }
+        public int? ServiceTypeID { get; set; }
+        public Service ServiceType { get; set; }
     }
 }

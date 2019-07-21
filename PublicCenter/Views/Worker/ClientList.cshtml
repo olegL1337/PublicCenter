@@ -1,168 +1,103 @@
-﻿@model IEnumerable<PublicCenter.Models.Client>
-
+﻿@model IEnumerable<PublicCenter.Models.ExtraModels.ClientListModel>
 @{
     ViewData["Title"] = "ClientList";
 }
-
-<h2>ClientList</h2>
-
+<h2>Clients List</h2>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateClient">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Department)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Last_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Father_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Formal_addressId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Real_addressId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone_stat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mobile_phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Personal_file_number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date_birth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Passport)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Identify_number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Group)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Period)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Degree_Indiv_Need)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Group_Motor_Activity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ability_Self_Service)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Condition_Giving_Service)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Number_Of_Visit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Worker)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Organization_Service_House)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Is_active)
-            </th>
-            <th></th>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Date of birth</th>
+            <th>Contacts</th>
+            <th>Identification</th>
+            @*<th>Visits</th>*@
+            <th>Disabilities</th>
+            <th>Real Address</th>
+            @*<th>Formal Address</th>*@
+            @*<th>Worker</th>*@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.First_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Last_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Father_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Formal_addressId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Real_addressId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone_stat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mobile_phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Personal_file_number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date_birth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Passport)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Identify_number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Group)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Period)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Degree_Indiv_Need)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Group_Motor_Activity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ability_Self_Service)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Condition_Giving_Service)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number_Of_Visit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Worker.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Organization_Service_House)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Is_active)
-            </td>
-        </tr>
-}
+        @try
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Сlient.First_name
+                        <br />
+                        @item.Сlient.Last_name
+                        <br />
+                        @item.Сlient.Father_name
+                    </td>
+                    <td>
+                        @if (item.Сlient.Sex != null)
+                        {
+                            @if ((bool)item.Сlient.Sex)
+                            {
+                                <div>Male</div>
+                            }
+                            else
+                            {
+                                <div>Female</div>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @item.Сlient.Date_birth
+                    </td>
+
+                    <td>
+                        Telephone: @item.Сlient.Phone_stat
+                        <br>
+                        Mobile Phone: @item.Сlient.Mobile_phone
+                    </td>
+                    <td>
+                        File number: @item.Сlient.Personal_file_number
+                        Passport: @item.Сlient.Passport
+                    </td>
+                    @*<td>
+                        Visits: @item.Сlient.Number_Of_Visit
+                        Service level: @item.Сlient.Condition_Giving_Service
+                    </td>*@
+                    <td>
+                        Self-service: @item.Сlient.Ability_Self_Service
+                        Individ Need: @item.Сlient.Degree_Indiv_Need
+                        Motor Ability: @item.Сlient.Group_Motor_Activity
+                    </td>
+                    <td>
+                        @item.RealAddress.City
+                        <br>
+                        @item.RealAddress.District
+                        <br>
+                        @item.RealAddress.Addr
+                    </td>
+                    @*<td>
+                        @item.FormalAddress.City
+                        <br>
+                        @item.FormalAddress.District
+                        <br>
+                        @item.FormalAddress.Addr
+                    </td>*@
+                    @*<td>
+                        @item.Worker.First_name @item.Worker.Last_name
+                        <br>
+                        ID: @item.Worker.ID
+                        <br>
+                        Phone: @item.Worker.Mobile_phone
+                    </td>*@
+                    @*<td>
+                        @Html.ActionLink("Edit", "EditClient", new { id = item.Сlient.ID })
+                        @Html.ActionLink("Details", "DetailsClient", new { id = item.Сlient.ID })
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    @*</td>*@
+                </tr>
+            }
+        }
+        catch { }
     </tbody>
 </table>

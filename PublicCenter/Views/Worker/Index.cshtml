@@ -4,6 +4,4 @@
 }
 @model  Worker
 <h2>Hello, @Model.First_name @Model.Last_name</h2>
-
-<button asp-action="Schedule">Schedule</button>
-<button asp-action="ClientList">Clients</button>
+<p>You are assigned to Departament: @Model.DepartmentID</p>

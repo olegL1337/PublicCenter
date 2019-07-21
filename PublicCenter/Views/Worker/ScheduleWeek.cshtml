@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PublicCenter.Models.ExtraModels.ClientWeekSTypesModel>
+
+@{
+    ViewData["Title"] = "ScheduleWeek";
+}
+
+<h2>Weel Schedules</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@if (Model == null)
+{
+    <p>You have no clients yet.</p>
+}
+else
+{
+
+    @foreach (var item in Model)
+    {
+        <h4>@item.Client.First_name @item.Client.First_name</h4>
+        <h5><b>Services:</b></h5>
+        <p>
+            @foreach (ServiceType type in item.Types)
+            {
+                @type.Name
+                <br />
+            }
+        </p>
+        <table border="1" width="600">
+            <thead>
+                <tr>
+                    <th align="center"> <center>Monday</center></th>
+                    <th align="center"><center>Tuesday</center></th>
+                    <th align="center"><center>Wednesday</center></th>
+                    <th align="center"><center>Thirsday</center></th>
+                    <th align="center"><center>Friday</center></th>
+                    <th align="center"><center>Saturday</center></th>
+                    <th align="center"><center>Sunday</center></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <input name="schedule" @(Convert.ToBoolean(item.Week.Monday) == true ? "checked='checked'" : string.Empty) type="checkbox" disabled value="Monday">
+                    </td>
+                    <td align="center">
+                        <input name="schedule" @(Convert.ToBoolean(item.Week.Tuesday) == true ? "checked='checked'" : string.Empty) type="checkbox" disabled value="Tuesday">
+                    </td>
+                    <td align="center">
+                        <input name="schedule" @(Convert.ToBoolean(item.Week.Wednesday) == true ? "checked='checked'" : string.Empty) type="checkbox" disabled value="Wednesday">
+                    </td>
+                    <td align="center">
+                        <input name="schedule" @(Convert.ToBoolean(item.Week.Thirsday) == true ? "checked='checked'" : string.Empty) type="checkbox" disabled value="Thirsday">
+                    </td>
+                    <td align="center">
+                        <input name="schedule" @(Convert.ToBoolean(item.Week.Friday) == true ? "checked='checked'" : string.Empty) type="checkbox" disabled value="Friday">
+                    </td>
+                    <td align="center">
+                        <input name="schedule" @(Convert.ToBoolean(item.Week.Saturday) == true ? "checked='checked'" : string.Empty) type="checkbox" disabled value="Saturday">
+                    </td>
+                    <td align="center">
+                        <input name="schedule" @(Convert.ToBoolean(item.Week.Sunday) == true ? "checked='checked'" : string.Empty) type="checkbox" disabled value="Sunday">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+    }
+}

@@ -10,6 +10,7 @@ namespace PublicCenter.Models
     {
         [Key]
         public int ID { get; set; }
+        
         public int? DepartmentID { get; set; }
         public Department Department { get; set; }
         public string First_name { get; set; }
@@ -22,9 +23,10 @@ namespace PublicCenter.Models
         public string Passport { get; set; }
         public string Identify_number { get; set; }
         [DataType(DataType.Date)]
-        public DateTime Date_birth { get; set; }
-        public int Age { get; set; }
-        public bool Sex { get; set; }
+        public DateTime? Date_birth { get; set; }
+        public int? Age { get; set; }
+        public bool? Sex { get; set; }
         public string Role { get; set; }
+
     }
 }

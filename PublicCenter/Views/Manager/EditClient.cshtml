@@ -1,0 +1,200 @@
+﻿@model PublicCenter.Models.Client
+
+@{
+    ViewData["Title"] = "EditClient";
+}
+
+<h2>Edit @Model.First_name @Model.Last_name</h2>
+<div>
+    <a asp-action="ClientList">Back to List</a>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditClient" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="DepartmentID" />
+            <input type="hidden" asp-for="Formal_addressId" />
+            <input type="hidden" asp-for="Real_addressId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="First_name" class="control-label">First name</label>
+                <input asp-for="First_name" class="form-control" />
+                <span asp-validation-for="First_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Last_name" class="control-label">Last name</label>
+                <input asp-for="Last_name" class="form-control" />
+                <span asp-validation-for="Last_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Father_name" class="control-label">Fathers name</label>
+                <input asp-for="Father_name" class="form-control" />
+                <span asp-validation-for="Father_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date_birth" class="control-label">Date of birth</label>
+                <input asp-for="Date_birth" class="form-control" />
+                <span asp-validation-for="Date_birth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label">Sex</label>
+                <div class="checkbox">
+                    <label asp-for="Sex" class="control-label">Male</label>
+                    <input asp-for="Sex" type="radio" name="sex" value="True" />
+                    <label asp-for="Sex" class="control-label">Female</label>
+                    <input asp-for="Sex" type="radio" name="sex" value="False" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone_stat" class="control-label">Home Phone:</label>
+                <input asp-for="Phone_stat" class="form-control" />
+                <span asp-validation-for="Phone_stat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile_phone" class="control-label">Mobile Phone:</label>
+                <input asp-for="Mobile_phone" class="form-control" />
+                <span asp-validation-for="Mobile_phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Formal_address" class="control-label">Formal Address</label>
+                <br />
+                City: <input asp-for="Formal_address.City" class="form-control" />
+                District: <input asp-for="Formal_address.District" class="form-control" />
+                Address: <input asp-for="Formal_address.Addr" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Real_address" class="control-label">Real Address</label>
+                <br />
+                City: <input asp-for="Real_address.City" class="form-control" />
+                District: <input asp-for="Real_address.District" class="form-control" />
+                Address: <input asp-for="Real_address.Addr" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Organization_Service_House" class="control-label">House maintance ogranization</label>
+                <input asp-for="Organization_Service_House" class="form-control" />
+                <span asp-validation-for="Organization_Service_House" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Personal_file_number" class="control-label">File number:</label>
+                <input asp-for="Personal_file_number" class="form-control" />
+                <span asp-validation-for="Personal_file_number" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
+            <label asp-for="Age" class="control-label"></label>
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>*@
+
+            <div class="form-group">
+                <label asp-for="Passport" class="control-label">Passport code</label>
+                <input asp-for="Passport" class="form-control" />
+                <span asp-validation-for="Passport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Identify_number" class="control-label">Identification number</label>
+                <input asp-for="Identify_number" class="form-control" />
+                <span asp-validation-for="Identify_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Group" class="control-label">Custom group</label>
+                <input asp-for="Group" class="form-control" />
+                <span asp-validation-for="Group" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Period" class="control-label">Period</label>
+                <input asp-for="Period" class="form-control" />
+                <span asp-validation-for="Period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Degree_Indiv_Need" class="control-label">Individual needs</label>
+                <input asp-for="Degree_Indiv_Need" class="form-control" />
+                <span asp-validation-for="Degree_Indiv_Need" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Group_Motor_Activity" class="control-label">Group of motor activity</label>
+                <input asp-for="Group_Motor_Activity" class="form-control" />
+                <span asp-validation-for="Group_Motor_Activity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ability_Self_Service" class="control-label">Self-service abilities</label>
+                <input asp-for="Ability_Self_Service" class="form-control" />
+                <span asp-validation-for="Ability_Self_Service" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Condition_Giving_Service" class="control-label">Service Conditions</label>
+                <input asp-for="Condition_Giving_Service" class="form-control" />
+                <span asp-validation-for="Condition_Giving_Service" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Schedule</label>
+                <table border="1" width="600">
+                    <thead>
+                        <tr>
+                            <th align="center"> <center>Monday</center></th>
+                            <th align="center"><center>Tuesday</center></th>
+                            <th align="center"><center>Wednesday</center></th>
+                            <th align="center"><center>Thirsday</center></th>
+                            <th align="center"><center>Friday</center></th>
+                            <th align="center"><center>Saturday</center></th>
+                            <th align="center"><center>Sunday</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <input name="schedule" @(Convert.ToBoolean(ViewBag.Week.Monday) == true ? "checked='checked'" : string.Empty) type="checkbox" value="Monday">
+                            </td>
+                            <td align="center">
+                                <input name="schedule" @(Convert.ToBoolean(ViewBag.Week.Tuesday) == true ? "checked='checked'" : string.Empty) type="checkbox" value="Tuesday">
+                            </td>
+                            <td align="center">
+                                <input name="schedule" @(Convert.ToBoolean(ViewBag.Week.Wednesday) == true ? "checked='checked'" : string.Empty) type="checkbox" value="Wednesday">
+                            </td>
+                            <td align="center">
+                                <input name="schedule" @(Convert.ToBoolean(ViewBag.Week.Thirsday) == true ? "checked='checked'" : string.Empty) type="checkbox" value="Thirsday">
+                            </td>
+                            <td align="center">
+                                <input name="schedule" @(Convert.ToBoolean(ViewBag.Week.Friday) == true ? "checked='checked'" : string.Empty) type="checkbox" value="Friday">
+                            </td>
+                            <td align="center">
+                                <input name="schedule" @(Convert.ToBoolean(ViewBag.Week.Saturday) == true ? "checked='checked'" : string.Empty) type="checkbox" value="Saturday">
+                            </td>
+                            <td align="center">
+                                <input name="schedule" @(Convert.ToBoolean(ViewBag.Week.Sunday) == true ? "checked='checked'" : string.Empty) type="checkbox" value="Sunday">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Worker:</label>
+                <select name="worker" required>
+                    <option selected value="@Model.Worker.ID">@Model.Worker.First_name @Model.Worker.Last_name, ID: @Model.Worker.ID</option>
+                    @foreach (Worker worker in ViewBag.Workers)
+                    {
+                        <option value="@worker.ID">@worker.First_name @worker.Last_name, ID: @worker.ID</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <label class="control-label">Is Active</label>
+                        <input asp-for="Is_active" type="checkbox" />
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

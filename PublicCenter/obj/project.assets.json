@@ -12627,11 +12627,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xD\\Desktop\\PublicCenter\\PublicCenter\\PublicCenter.csproj",
+      "projectUniqueName": "C:\\Users\\xD\\Desktop\\CharityProject-master\\CharityProject-master\\PublicCenter\\PublicCenter.csproj",
       "projectName": "PublicCenter",
-      "projectPath": "C:\\Users\\xD\\Desktop\\PublicCenter\\PublicCenter\\PublicCenter.csproj",
+      "projectPath": "C:\\Users\\xD\\Desktop\\CharityProject-master\\CharityProject-master\\PublicCenter\\PublicCenter.csproj",
       "packagesPath": "C:\\Users\\xD\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xD\\Desktop\\PublicCenter\\PublicCenter\\obj\\",
+      "outputPath": "C:\\Users\\xD\\Desktop\\CharityProject-master\\CharityProject-master\\PublicCenter\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

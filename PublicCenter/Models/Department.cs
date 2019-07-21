@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +11,8 @@ namespace PublicCenter.Models
     {
         [Key]
         public int ID { get; set; }
-        public int? ManagerId { get; set; }
+        [ForeignKey("Worker")]
+        public int? WorkerId { get; set; }
         public Worker Worker { get; set; }
     }
 }

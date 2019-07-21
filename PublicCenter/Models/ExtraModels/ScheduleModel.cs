@@ -9,7 +9,8 @@ namespace PublicCenter.Models.ExtraModels
     {
         public int id { get; set; }
         public Client client { get; set; }
+        public ServiceType serviceType { get; set; }
         public Service service { get; set; }
-
+        public Address address { get; set; }
     }
 }

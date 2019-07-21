@@ -1,0 +1,124 @@
+﻿@model IEnumerable<PublicCenter.Models.ExtraModels.ClientListModel>
+
+@{
+   
+}
+
+<h2>Client List</h2>
+
+<h4>Departament:</h4>
+<form asp-action="ClientList" method="post">
+    <select name="depId">
+        <option value="" >ALL</option>
+        @foreach (Department dep in ViewBag.Departaments)
+        {
+        <option value="@dep.ID" >@dep.ID</option>
+        }
+        </select>
+    <button type="submit" class="submit-button">Submit</button>
+</form>
+<hr />
+
+
+@if (Model != null)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Departament</th>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Date of birth</th>
+            <th>Contacts</th>
+            <th>Identification</th>
+            <th>Visits</th>
+            <th>Disabilities</th>
+            <th>Real Address</th>
+            <th>Formal Address</th>
+            <th>Worker</th>
+        </tr>
+    </thead>
+    <tbody>
+        @try
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Department.ID</td>
+                    <td>
+                        @item.Сlient.First_name
+                        <br />
+                        @item.Сlient.Last_name
+                        <br />
+                        @item.Сlient.Father_name
+                    </td>
+                    <td>
+                        @if (item.Сlient.Sex != null)
+                        {
+                            @if ((bool)item.Сlient.Sex)
+                            {
+                                <div>Male</div>
+                            }
+                            else
+                            {
+                                <div>Female</div>
+                            }
+                        }
+
+                    </td>
+                    <td>
+                        @item.Сlient.Date_birth
+                    </td>
+
+                    <td>
+                        Telephone: @item.Сlient.Phone_stat
+                        <br>
+                        Mobile Phone: @item.Сlient.Mobile_phone
+                    </td>
+                    <td>
+                        File number: @item.Сlient.Personal_file_number
+                        Passport: @item.Сlient.Passport
+                    </td>
+                    <td>
+                        Visits: @item.Сlient.Number_Of_Visit
+                        Service level: @item.Сlient.Condition_Giving_Service
+                    </td>
+                    <td>
+                        Self-service: @item.Сlient.Ability_Self_Service
+                        Individ Need: @item.Сlient.Degree_Indiv_Need
+                        Motor Ability: @item.Сlient.Group_Motor_Activity
+                    </td>
+                    <td>
+                        @item.RealAddress.City
+                        <br>
+                        @item.RealAddress.District
+                        <br>
+                        @item.RealAddress.Addr
+                    </td>
+                    <td>
+                        @item.FormalAddress.City
+                        <br>
+                        @item.FormalAddress.District
+                        <br>
+                        @item.FormalAddress.Addr
+                    </td>
+                    <td>
+                        @item.Worker.First_name @item.Worker.Last_name
+                        <br>
+                        ID: @item.Worker.ID
+                        <br>
+                        Phone: @item.Worker.Mobile_phone
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditClient", new { id = item.Сlient.ID }) |
+                        @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        }
+        catch { }
+    </tbody>
+</table>
+}
+

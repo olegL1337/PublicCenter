@@ -1,0 +1,52 @@
+﻿@model PublicCenter.Models.ExtraModels.ServiceListModel
+@{
+    ViewData["Title"] = "ServiceList";
+}
+
+<div>
+    <h3>Services:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Motor Disabilities</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Service service in Model.services)
+            {
+                <tr>
+                    <td> @service.ID </td>
+                    <td> @service.Name </td>
+                    <td> @Model.servicesTypes.FirstOrDefault(t => t.ID == service.ServiceTypeID).Name
+                    <td> @service.GroupOfMotorActivity </td>
+                    <td> @service.Price </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <h3>Types:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(ServiceType type in Model.servicesTypes)
+            {
+                <tr>
+                    <td>@type.ID</td>
+                    <td>@type.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <a asp-action="Index">Back</a>
+</div>

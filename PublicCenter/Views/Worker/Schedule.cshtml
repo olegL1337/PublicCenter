@@ -4,12 +4,9 @@
     ViewData["Title"] = "Schedule";
 }
 
-<h2>Schedule</h2>
+<h2>Schedule for @DateTime.Today.DayOfWeek, @DateTime.Today.ToShortDateString()</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table" border="1">
     <thead>
         <tr>
             <th>
@@ -21,25 +18,40 @@
             <th>
                 Service
             </th>
+            <th>
+                Type of Service
+            </th>
         </tr>
     </thead>
     <tbody>
+        @try
+        { 
 @foreach (var item in Model) {
         <tr>
             <td>
-                @item.client.First_name
-                @item.client.Last_name
-            </td>
+                <a asp-action="ClientPlan" asp-route-client_id="@item.client.ID">
+                    @item.client.First_name
+                    <br />
+                    @item.client.Last_name
+                </a>
+</td>
             <td>
-                @item.client.Real_address.City 
-                @item.client.Real_address.District  
-                @item.client.Real_address.Addr
+                @item.address.City
+                <br />
+                @item.address.District
+                <br />
+                @item.address.Addr
             </td>
             <td>
                 @item.service.Name
-                @item.service.Price
+            </td>
+            <td>
+                @item.serviceType.Name
             </td>
         </tr>
 }
+        }
+        catch { }
+
     </tbody>
 </table>

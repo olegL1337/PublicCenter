@@ -1,0 +1,160 @@
+﻿@model PublicCenter.Models.Client
+
+@{
+    ViewData["Title"] = "DetailsClient";
+}
+
+<h2>Details for @Model.First_name @Model.Last_name</h2>
+<div>
+    <a asp-action="ClientList">Back to List</a>
+</div>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.First_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.First_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Last_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Father_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Father_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formal_address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formal_address.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Real_address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Real_address.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_stat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone_stat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile_phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile_phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Personal_file_number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Personal_file_number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_birth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date_birth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Passport)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Passport)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Identify_number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Identify_number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Group)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Period)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Period)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Degree_Indiv_Need)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Degree_Indiv_Need)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Group_Motor_Activity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Group_Motor_Activity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ability_Self_Service)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ability_Self_Service)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Condition_Giving_Service)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Condition_Giving_Service)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Number_Of_Visit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Number_Of_Visit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Worker.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Organization_Service_House)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Organization_Service_House)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Is_active)
+        </dd>
+    </dl>
+</div>
+

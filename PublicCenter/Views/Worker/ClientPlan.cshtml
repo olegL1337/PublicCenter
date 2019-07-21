@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PublicCenter.Models.ExtraModels.ScheduleModel>
+
+@{
+    ViewData["Title"] = "ClientPlan";
+}
+
+<h2>Plan for: @Model.Last().client.First_name @Model.Last().client.Last_name </h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>*@
+    </dl>
+</div>
+<div>
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th>
+                    Service Type
+                </th>
+                <th>Service</th>
+                <th>Complete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("ClientPlan", "Worker", FormMethod.Post))
+            {
+                @foreach (PublicCenter.Models.ExtraModels.ScheduleModel sm in Model)
+                {
+                    <tr>
+                        <td>@sm.serviceType.Name</td>
+                        <td>@sm.service.Name </td>
+                        <td>
+                            <input value="@sm.id" name="completeId"  type="checkbox"/>
+                        </td>
+                    </tr>
+                }
+                <tr></tr>
+                <tr></tr>
+                <tr><td><button class="submit-button" type="submit">SUBMIT</button></td></tr>
+                
+            }
+            </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Schedule">Back</a>
+</div>

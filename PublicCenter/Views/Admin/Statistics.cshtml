@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PublicCenter.Models.DoneWork>
+@{
+    ViewData["Title"] = "Statistics";
+}
+
+<h2>Statistics</h2>
+
+<h4>Departament:</h4>
+<form asp-action="Statistics" method="post">
+    <select name="depId">
+        <option value="">ALL</option>
+        @foreach (Department dep in ViewBag.Departaments)
+        {
+            <option value="@dep.ID">@dep.ID</option>
+        }
+    </select>
+    <button type="submit" class="submit-button">Submit</button>
+</form>
+<hr />
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Worker
+                </th>
+                <th>
+                    Client
+                </th>
+                <th>
+                    Service
+                </th>
+                <th>
+                    Date
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Worker.First_name @item.Worker.Last_name,
+                        @item.Worker.ID
+                    </td>
+                    <td>
+                        @item.Client.First_name @item.Client.Last_name,
+                        @item.Client.ID
+                    </td>
+                    <td>
+                        @item.Service.Name,
+                        @item.Service.ID
+                    </td>
+                    <td>
+                        @item.Date_of_service
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
